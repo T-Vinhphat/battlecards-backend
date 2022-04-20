@@ -7,7 +7,7 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/game", function (req, res, next) {
-  res.render("index", { title: "Express" });
+  res.send("index", { title: "Express" });
 });
 
 router.get("/login", function (req, res, next) {
