@@ -28,5 +28,6 @@ router.get("/shop", function (req, res, next) {
 
 router.get("/collection", function (req, res, next) {
   res.send("collection");
+
 });
 module.exports = router;
