@@ -5,7 +5,7 @@ const profil = require("../componants/profil");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.send("index");
+  res.render("index");
 });
 
 router.get("/game", function (req, res, next) {
@@ -28,6 +28,5 @@ router.get("/shop", function (req, res, next) {
 
 router.get("/collection", function (req, res, next) {
   res.send("collection");
-
 });
 module.exports = router;
