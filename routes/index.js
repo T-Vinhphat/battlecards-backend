@@ -1,32 +1,33 @@
 var express = require("express");
 var router = express.Router();
 
+const profil = require("../componants/profil");
+
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "Battle Cards" });
+  res.send("index");
 });
 
 router.get("/game", function (req, res, next) {
-  res.render("game", { title: "Express" });
+  res.send("plateau");
 });
 
 router.get("/login", function (req, res, next) {
-  res.render("login", { title: "Express" });
+  res.send("login");
 });
 
 router.get("/signin", function (req, res, next) {
-  res.render("signin", { title: "Express" });
+  res.send("signin");
 });
 
-router.get("/profil/:user", function (req, res, next) {
-  res.render("profil", { title: "Express" });
-});
+router.get("/profil/:user", profil.gatherInfo);
 
 router.get("/shop", function (req, res, next) {
-  res.render("shop", { title: "Express" });
+  res.send("shop");
 });
 
 router.get("/collection", function (req, res, next) {
-  res.render("collection", { title: "Express" });
+  res.send("collection");
+
 });
 module.exports = router;

@@ -3,19 +3,19 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get("/my-collection", function (req, res, next) {
-  res.send("respond with a resource");
+  res.send("all card");
 });
 
 router.get("/my-collection/add", function (req, res, next) {
-  res.send("respond with a resource");
+  res.send("add card");
 });
 
 router.get("/my-collection/delete", function (req, res, next) {
-  res.send("respond with a resource");
+  res.send("delete card");
 });
 
 router.get("/my-collection/see", function (req, res, next) {
-  res.send("respond with a resource");
+  res.send("see card");
 });
 
 module.exports = router;
