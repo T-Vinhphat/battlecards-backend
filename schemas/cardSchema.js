@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const cardSchema = new mongoose.Schema({
-  card: String,
-  value: Number,
+  imgSrc: String,
+  cardPower: Number,
 });
 
 const card = mongoose.model("card", cardSchema);
