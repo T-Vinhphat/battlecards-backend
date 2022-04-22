@@ -7,7 +7,8 @@ async function gatherDeck(req, res) {
 
   const Deck = await userModel
     .findOne({ pseudo })
-    .populate({ path: "deck", populate: { path: "cards" } });
+    .select("decks")
+    .populate({ path: "decks", populate: { path: "cards" } });
   res.send(Deck);
 }
 
@@ -20,7 +21,7 @@ async function addUser(req, res) {
       win: req.body.win,
       lose: req.body.lose,
     },
-    deck: req.body.deck,
+    decks: req.body.decks,
   });
 
   await user.save();
