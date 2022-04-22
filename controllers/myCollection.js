@@ -3,7 +3,7 @@ const cardModel = require("../schemas/cardSchema");
 const deckModel = require("../schemas/deckSchema");
 
 async function gatherDeck(req, res) {
-  const pseudo = req.body.pseudo;
+  const pseudo = req.params.id;
 
   const Deck = await userModel
     .findOne({ pseudo })

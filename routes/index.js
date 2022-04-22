@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-const profil = require("../componants/profil");
+const profil = require("../controllers/profil");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
