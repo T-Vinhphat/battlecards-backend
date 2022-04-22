@@ -1,17 +1,15 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema(
-  {
-    pseudo: String,
-    email: String,
-    password: String,
-    stat: {
-      win: Number,
-      lose: Number,
-    },
+const userSchema = new mongoose.Schema({
+  pseudo: String,
+  email: String,
+  password: String,
+  stat: {
+    win: Number,
+    lose: Number,
   },
-  { collection: "user" }
-);
+  deck: [{ type: mongoose.Schema.Types.ObjectId, ref: "deck" }],
+});
 
 const user = mongoose.model("user", userSchema);
 
