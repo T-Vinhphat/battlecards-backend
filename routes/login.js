@@ -8,7 +8,10 @@ loginRouter.post("/", async (req, res) => {
   if (!email || !password) return res.sendStatus(400);
 
   const findUser = await user.find({ email });
-  console.log(findUser);
+  if (findUser.length === 0) {
+    res.status(400);
+    return res.send("Compte inexistant");
+  }
 
   res.send("Vous êtes connecté");
 });
