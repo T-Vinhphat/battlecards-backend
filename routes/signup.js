@@ -2,8 +2,6 @@ const express = require("express");
 const router = express.Router();
 const userSchema = require("../schemas/userSchema");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const { response } = require("express");
 
 const salt = 10;
 
