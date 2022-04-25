@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     win: Number,
     lose: Number,
   },
-  deck: [{ type: mongoose.Schema.Types.ObjectId, ref: "deck" }],
+  decks: [{ type: mongoose.Schema.Types.ObjectId, ref: "deck" }],
 });
 
 const user = mongoose.model("user", userSchema);
