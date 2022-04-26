@@ -6,8 +6,9 @@ const bcrypt = require("bcrypt");
 const salt = 10;
 
 router.post("/", async (req, res) => {
-  const { email, password, confirmPassword } = req.body;
+  const { pseudo, email, password, confirmPassword } = req.body;
 
+  if (!pseudo) return res.sendStatus(400);
   if (!email) return res.sendStatus(400);
   if (!password) return res.sendStatus(400);
   if (!confirmPassword) return res.sendStatus(400);
@@ -18,9 +19,11 @@ router.post("/", async (req, res) => {
 
   const userMail = await userSchema.find({ email });
 
-  if (userMail.length === 0) {
+  const userPseudo = await userSchema.find({ pseudo });
+
+  if (userMail.length === 0 && userPseudo.length === 0) {
     try {
-      await userSchema.create({ email, password: hashedPassword });
+      await userSchema.create({ pseudo, email, password: hashedPassword });
     } catch (err) {
       return res.sendStatus(500);
     }
