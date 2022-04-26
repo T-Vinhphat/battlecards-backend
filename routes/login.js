@@ -2,6 +2,7 @@ var express = require("express");
 var loginRouter = express.Router();
 const user = require("../schemas/userSchema");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 loginRouter.post("/", async (req, res) => {
   const { email, password } = req.body;
@@ -17,8 +18,10 @@ loginRouter.post("/", async (req, res) => {
 
   bcrypt.compare(password, User.password).then((matching) => {
     console.log(matching);
-    if (matching) res.send("Vous êtes connecté");
-    else {
+    if (matching) {
+      const token = jwt.sign({ id: User.id }, process.env.SECRET);
+      res.send({ jwt: token });
+    } else {
       res.status(400);
       res.send("Mot de passe incorrect, veuillez recommencer");
     }
