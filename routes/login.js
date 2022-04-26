@@ -16,6 +16,7 @@ loginRouter.post("/", async (req, res) => {
   }
 
   bcrypt.compare(password, User.password).then((matching) => {
+    console.log(matching);
     if (matching) res.send("Vous êtes connecté");
     else {
       res.status(400);
