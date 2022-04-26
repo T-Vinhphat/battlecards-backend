@@ -16,7 +16,7 @@ var app = express();
 app.use(cors());
 
 mongoose
-  .connect("mongodb://localhost:27017/battlecards")
+  .connect(process.env.MONGO_URL)
   .then(() => {
     console.log("connected");
   })

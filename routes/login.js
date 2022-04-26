@@ -2,7 +2,6 @@ var express = require("express");
 var loginRouter = express.Router();
 const user = require("../schemas/userSchema");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 
 loginRouter.post("/", async (req, res) => {
   const { email, password } = req.body;
@@ -15,8 +14,6 @@ loginRouter.post("/", async (req, res) => {
     res.status(400);
     return res.send("Compte inexistant");
   }
-
-  const token = jwt.sign({ id: user._id }, process.env.SECRET);
 
   bcrypt.compare(password, User.password).then((matching) => {
     if (matching) res.send("Vous êtes connecté");
